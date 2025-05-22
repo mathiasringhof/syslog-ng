@@ -13,11 +13,12 @@ RUN apt-get update && \
 # COPY syslog-ng.conf /etc/syslog-ng/syslog-ng.conf 
 
 # Standard syslog UDP port
-EXPOSE 514/udp 
+EXPOSE 1514/udp 
 
 # Run syslog-ng in the foreground, do not drop capabilities immediately if binding to low port as root
 # The exact command might vary slightly based on the syslog-ng version from Debian.
 # Often, the package maintainer scripts handle running it correctly.
 # If running as non-root and binding to >1024, this is simpler.
 # For binding to 514 as root (common in containers for this):
-CMD ["/usr/sbin/syslog-ng", "-F", "--no-caps"]
+# CMD ["/usr/sbin/syslog-ng", "-F", "--no-caps"]
+CMD ["/usr/sbin/syslog-ng", "-F", "-d", "--no-caps"]
