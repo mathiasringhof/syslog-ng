@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Install syslog-ng and any minimal dependencies
 RUN apt-get update && \
